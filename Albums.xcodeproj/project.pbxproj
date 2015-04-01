@@ -8,11 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		1D0597091AC9259000104573 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0597081AC9259000104573 /* AppDelegate.swift */; };
-		1D05970B1AC9259000104573 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D05970A1AC9259000104573 /* ViewController.swift */; };
 		1D05970E1AC9259000104573 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D05970C1AC9259000104573 /* Main.storyboard */; };
 		1D0597101AC9259000104573 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D05970F1AC9259000104573 /* Images.xcassets */; };
 		1D0597131AC9259000104573 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D0597111AC9259000104573 /* LaunchScreen.xib */; };
 		1D05971F1AC9259000104573 /* AlbumsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D05971E1AC9259000104573 /* AlbumsTests.swift */; };
+		1D0597291AC92AE800104573 /* GalaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D0597281AC92AE800104573 /* GalaryViewController.swift */; };
+		1D05972B1AC92B1600104573 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D05972A1AC92B1600104573 /* ListViewController.swift */; };
+		1D05972D1AC9513700104573 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D05972C1AC9513700104573 /* Album.swift */; };
+		1D05972F1AC962F300104573 /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D05972E1AC962F300104573 /* AlbumCell.swift */; };
+		1D96AB551AC979D200565984 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D96AB541AC979D200565984 /* ImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +33,17 @@
 		1D0597031AC9259000104573 /* Albums.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Albums.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D0597071AC9259000104573 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D0597081AC9259000104573 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1D05970A1AC9259000104573 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1D05970D1AC9259000104573 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1D05970F1AC9259000104573 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1D0597121AC9259000104573 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		1D0597181AC9259000104573 /* AlbumsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlbumsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D05971D1AC9259000104573 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D05971E1AC9259000104573 /* AlbumsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsTests.swift; sourceTree = "<group>"; };
+		1D0597281AC92AE800104573 /* GalaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalaryViewController.swift; sourceTree = "<group>"; };
+		1D05972A1AC92B1600104573 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		1D05972C1AC9513700104573 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		1D05972E1AC962F300104573 /* AlbumCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
+		1D96AB541AC979D200565984 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +86,11 @@
 			isa = PBXGroup;
 			children = (
 				1D0597081AC9259000104573 /* AppDelegate.swift */,
-				1D05970A1AC9259000104573 /* ViewController.swift */,
+				1D0597281AC92AE800104573 /* GalaryViewController.swift */,
+				1D05972C1AC9513700104573 /* Album.swift */,
+				1D05972A1AC92B1600104573 /* ListViewController.swift */,
+				1D96AB541AC979D200565984 /* ImageViewController.swift */,
+				1D05972E1AC962F300104573 /* AlbumCell.swift */,
 				1D05970C1AC9259000104573 /* Main.storyboard */,
 				1D05970F1AC9259000104573 /* Images.xcassets */,
 				1D0597111AC9259000104573 /* LaunchScreen.xib */,
@@ -212,8 +224,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D05970B1AC9259000104573 /* ViewController.swift in Sources */,
+				1D05972F1AC962F300104573 /* AlbumCell.swift in Sources */,
 				1D0597091AC9259000104573 /* AppDelegate.swift in Sources */,
+				1D05972B1AC92B1600104573 /* ListViewController.swift in Sources */,
+				1D0597291AC92AE800104573 /* GalaryViewController.swift in Sources */,
+				1D96AB551AC979D200565984 /* ImageViewController.swift in Sources */,
+				1D05972D1AC9513700104573 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +427,7 @@
 				1D0597241AC9259000104573 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1D0597251AC9259000104573 /* Build configuration list for PBXNativeTarget "AlbumsTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +436,7 @@
 				1D0597271AC9259000104573 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
