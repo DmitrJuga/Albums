@@ -1,8 +1,8 @@
 # Swift1
-geekbrains.ru, Swift course
+geekbrains.ru, Swift course,
 home work project #1
 
-##Albums
+##"Albums"
 
 ###Lesson 2
 Сделал слайд шоу (карусель) по нескольким картинкам (обложкам альбомов), с кнопками вперед и назад. Слайд шоу зациклено. Картинки сменяются с анимацией.
