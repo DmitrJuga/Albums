@@ -19,7 +19,6 @@ class GalaryViewController: UIViewController {
     
     @IBOutlet weak var albumView: UIImageView!
     @IBOutlet weak var outImageView: UIImageView!
-    
     @IBOutlet weak var albumName: UILabel!
     @IBOutlet weak var artistName: UILabel!
     
@@ -40,13 +39,12 @@ class GalaryViewController: UIViewController {
     // Карусель
     func rollCarousel(direction: RollDirection) {
         
-        //Смена номера текущего альбома
+        // смена номера текущего альбома
         albumIndex += direction.rawValue
-        //Корректировка номера для зацикливания
+        // корректировка номера для зацикливания
         albumIndex = (albumIndex > AlbumLibrary.count - 1) ? 0 : (albumIndex < 0) ? AlbumLibrary.count - 1 : albumIndex
-        //Загрузка текущего альбома
+        // загрузка текущего альбома
         currentAlbum = AlbumLibrary.getAlbum(albumIndex)
-
         
         // апдейт подписей
         albumName.text = currentAlbum.name
@@ -70,16 +68,14 @@ class GalaryViewController: UIViewController {
         albumView.alpha = 0
         
         // запуск анимации
-        UIImageView.animateWithDuration(0.5,
-            animations: {self.outImageView.alpha = 0
-                self.outImageView.frame.origin.x = outFinalX})
-        
-        UIView.animateWithDuration(0.5,
-            animations: {self.albumView.alpha = 1
-                self.albumView.frame.origin.x = inFinalX})
-        
+        UIImageView.animateWithDuration(0.5) {
+                        self.outImageView.alpha = 0
+                        self.albumView.alpha = 1
+                        self.outImageView.frame.origin.x = outFinalX
+                        self.albumView.frame.origin.x = inFinalX
+                        }
+
     }
-    
     
     @IBAction func nextBtn(sender: UIButton) {
         rollCarousel(.next)

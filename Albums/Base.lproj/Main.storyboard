@@ -152,13 +152,13 @@
                                 <rect key="frame" x="16" y="64" width="343" height="140"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Альбом" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qCH-ue-lva">
-                                        <rect key="frame" x="136" y="21" width="60" height="20"/>
+                                        <rect key="frame" x="136" y="21" width="207" height="20"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Артист" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHH-sn-nWB">
-                                        <rect key="frame" x="136" y="38" width="53" height="20"/>
+                                        <rect key="frame" x="136" y="38" width="207" height="20"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -186,12 +186,15 @@
                                 <constraints>
                                     <constraint firstItem="wHH-sn-nWB" firstAttribute="leading" secondItem="tEv-aX-CAd" secondAttribute="trailing" constant="8" id="1qb-FQ-jmQ"/>
                                     <constraint firstItem="bBB-YK-QBe" firstAttribute="leading" secondItem="tEv-aX-CAd" secondAttribute="trailing" constant="8" id="4uU-GJ-y7y"/>
+                                    <constraint firstAttribute="trailing" secondItem="qCH-ue-lva" secondAttribute="trailing" id="7jq-Du-VZ6"/>
                                     <constraint firstItem="tEv-aX-CAd" firstAttribute="leading" secondItem="zxF-h7-UhB" secondAttribute="leading" constant="8" id="D63-N3-ZxY"/>
                                     <constraint firstItem="wHH-sn-nWB" firstAttribute="top" secondItem="qCH-ue-lva" secondAttribute="bottom" constant="-3" id="GW9-h6-5bJ"/>
                                     <constraint firstAttribute="height" constant="140" id="Hzo-Ko-mE2"/>
+                                    <constraint firstAttribute="trailing" secondItem="wHH-sn-nWB" secondAttribute="trailing" id="Jkz-xx-mE9"/>
                                     <constraint firstItem="f2F-Wd-oPx" firstAttribute="top" secondItem="bBB-YK-QBe" secondAttribute="bottom" constant="15" id="LzS-LK-8s4"/>
                                     <constraint firstItem="f2F-Wd-oPx" firstAttribute="leading" secondItem="tEv-aX-CAd" secondAttribute="trailing" constant="8" id="SBk-sX-jex"/>
                                     <constraint firstItem="qCH-ue-lva" firstAttribute="leading" secondItem="tEv-aX-CAd" secondAttribute="trailing" constant="8" id="Tzh-8S-GNM"/>
+                                    <constraint firstAttribute="trailing" secondItem="wHH-sn-nWB" secondAttribute="trailing" id="WBE-qy-p4K"/>
                                     <constraint firstItem="qCH-ue-lva" firstAttribute="top" secondItem="tEv-aX-CAd" secondAttribute="top" constant="11" id="hIL-5f-rDV"/>
                                     <constraint firstAttribute="centerY" secondItem="tEv-aX-CAd" secondAttribute="centerY" id="igw-hb-MnS"/>
                                     <constraint firstItem="bBB-YK-QBe" firstAttribute="top" secondItem="wHH-sn-nWB" secondAttribute="bottom" constant="8" id="xqO-YG-53T"/>
@@ -231,11 +234,11 @@
                                                 <constraint firstAttribute="centerY" secondItem="2F0-eF-Liv" secondAttribute="centerY" id="2eK-sh-Jbc"/>
                                                 <constraint firstItem="Uqv-fS-9Hx" firstAttribute="leading" secondItem="KEO-3P-xUw" secondAttribute="leadingMargin" constant="34" id="Cqn-MH-Fm7"/>
                                                 <constraint firstAttribute="centerY" secondItem="R70-FJ-qlO" secondAttribute="centerY" id="DMJ-md-cEt"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Uqv-fS-9Hx" secondAttribute="trailing" constant="33" id="RDr-JR-3Nx"/>
                                                 <constraint firstItem="R70-FJ-qlO" firstAttribute="leading" secondItem="KEO-3P-xUw" secondAttribute="leadingMargin" id="SuN-Z5-mk8"/>
                                                 <constraint firstItem="Uqv-fS-9Hx" firstAttribute="leading" secondItem="R70-FJ-qlO" secondAttribute="trailing" constant="8" id="W8v-m6-d4V"/>
                                                 <constraint firstAttribute="centerY" secondItem="Uqv-fS-9Hx" secondAttribute="centerY" id="mog-qT-ArD"/>
                                                 <constraint firstItem="2F0-eF-Liv" firstAttribute="trailing" secondItem="KEO-3P-xUw" secondAttribute="trailingMargin" id="qTd-Jr-INW"/>
-                                                <constraint firstItem="2F0-eF-Liv" firstAttribute="leading" secondItem="Uqv-fS-9Hx" secondAttribute="trailing" constant="8" id="xph-8f-Y8h"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
