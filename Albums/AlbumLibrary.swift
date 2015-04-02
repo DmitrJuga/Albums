@@ -39,7 +39,7 @@ struct Album {
     }
     //общая информация о треках
     var tracksSummary: String {
-        return "Песен: \(tracks.count), \(totalDuration / 60) мин."
+        return "Песен: \(tracks.count); \(totalDuration / 60) мин."
     }
 }
 
@@ -63,7 +63,7 @@ class AlbumLibrary {
             }
         }
         //если библиотека пуста или индекс вне диапазона - возвращаем "пустой" альбом
-        return Album(name: "", artist: "", year: 1900, coverImage: "", tracks:[])
+        return Album(name: "#Пустой альбом!", artist: "", year: 1900, coverImage: "coverImg0", tracks:[])
     }
     
     // Загрузка и парсинг json файла

@@ -73,7 +73,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coverImg1" translatesAutoresizingMaskIntoConstraints="NO" id="OBZ-0W-EMc">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coverImg0" translatesAutoresizingMaskIntoConstraints="NO" id="OBZ-0W-EMc">
                                                     <rect key="frame" x="8" y="3" width="62" height="62"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="62" id="Lz7-02-daw"/>
@@ -175,7 +175,7 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coverImg1" translatesAutoresizingMaskIntoConstraints="NO" id="tEv-aX-CAd">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coverImg0" translatesAutoresizingMaskIntoConstraints="NO" id="tEv-aX-CAd">
                                         <rect key="frame" x="8" y="10" width="120" height="120"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="5iT-TG-YjS"/>
@@ -324,8 +324,8 @@
                                             <segue destination="Jq5-dE-o3c" kind="show" id="yVV-9t-Qdy"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Исполнитель" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ff-5R-B2r">
-                                        <rect key="frame" x="127" y="26" width="89" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Артист" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ff-5R-B2r">
+                                        <rect key="frame" x="148" y="26" width="47" height="17"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -349,13 +349,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lts-mO-r29" userLabel="ImageContainer">
                                 <rect key="frame" x="16" y="64" width="343" height="343"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coverImg1" translatesAutoresizingMaskIntoConstraints="NO" id="YEy-Gr-Ub0" userLabel="AlbumImage">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coverImg0" translatesAutoresizingMaskIntoConstraints="NO" id="YEy-Gr-Ub0" userLabel="AlbumImage">
                                         <rect key="frame" x="8" y="8" width="327" height="327"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="YEy-Gr-Ub0" secondAttribute="height" multiplier="1:1" id="wS6-DZ-VMJ"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coverImg1" translatesAutoresizingMaskIntoConstraints="NO" id="1gE-kY-eRe" userLabel="OutImage">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coverImg0" translatesAutoresizingMaskIntoConstraints="NO" id="1gE-kY-eRe" userLabel="OutImage">
                                         <rect key="frame" x="8" y="8" width="327" height="327"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="1gE-kY-eRe" secondAttribute="height" multiplier="1:1" id="dgN-XY-dRA"/>
@@ -390,7 +390,10 @@
                         <outlet property="albumName" destination="2fd-Ft-71y" id="lHp-mH-fJ2"/>
                         <outlet property="albumView" destination="YEy-Gr-Ub0" id="7WM-zk-4jy"/>
                         <outlet property="artistName" destination="3ff-5R-B2r" id="bQL-p5-Ywa"/>
+                        <outlet property="detailBtn" destination="nhW-YR-h1k" id="eNf-Ya-0OZ"/>
+                        <outlet property="nextBtn" destination="xHN-J9-HBY" id="TuD-xx-jTF"/>
                         <outlet property="outImageView" destination="1gE-kY-eRe" id="7a8-ef-IFZ"/>
+                        <outlet property="prevBtn" destination="S6H-IA-AfX" id="0xN-nH-Mmb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z2u-dr-qhu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -403,9 +406,9 @@
         <image name="List" width="32" height="32"/>
         <image name="Next" width="64" height="64"/>
         <image name="Prev" width="64" height="64"/>
-        <image name="coverImg1" width="150" height="150"/>
+        <image name="coverImg0" width="225" height="209"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kWt-QD-oVg"/>
+        <segue reference="yVV-9t-Qdy"/>
     </inferredMetricsTieBreakers>
 </document>

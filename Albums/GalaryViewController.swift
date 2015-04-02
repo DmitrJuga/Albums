@@ -21,18 +21,29 @@ class GalaryViewController: UIViewController {
     @IBOutlet weak var outImageView: UIImageView!
     @IBOutlet weak var albumName: UILabel!
     @IBOutlet weak var artistName: UILabel!
+    @IBOutlet weak var prevBtn: UIButton!
+    @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var detailBtn: UIButton!
     
     var albumIndex = 0
     var currentAlbum: Album!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         outImageView.hidden = true
-        currentAlbum = AlbumLibrary.getAlbum(albumIndex)
-        albumView.image = UIImage(named: currentAlbum.coverImage)
-        albumName.text = currentAlbum.name
-        artistName.text = currentAlbum.artist
+        if AlbumLibrary.count != 0 {
+            currentAlbum = AlbumLibrary.getAlbum(albumIndex)
+            albumView.image = UIImage(named: currentAlbum.coverImage)
+            albumName.text = currentAlbum.name
+            artistName.text = currentAlbum.artist
+        } else {
+            prevBtn.hidden = true
+            nextBtn.hidden = true
+            detailBtn.hidden = true
+            albumView.image = UIImage(named: "coverImg0")
+            albumName.text = "#Альбомы не загружены!"
+            artistName.text = ""
+        }
     }
 
     
@@ -91,7 +102,7 @@ class GalaryViewController: UIViewController {
     // настраиваем AlbumDetailsViewController
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let newVC = segue.destinationViewController as? AlbumDetailsViewController {
-                newVC.currentAlbum = currentAlbum
+                newVC.currentAlbum = AlbumLibrary.getAlbum(albumIndex)
         }
     }
     
