@@ -1,7 +1,2 @@
 # Exclude personal Xcode user settings
-xcuserdata/ 
-Albums.xcodeproj/xcuserdata/dmitrjuga.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
-
-Albums.xcodeproj/xcuserdata/dmitrjuga.xcuserdatad/xcschemes/Albums.xcscheme
-
-Albums.xcodeproj/xcuserdata/dmitrjuga.xcuserdatad/xcschemes/xcschememanagement.plist
+xcuserdata/
