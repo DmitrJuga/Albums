@@ -17,24 +17,25 @@ class ListViewController: UIViewController, UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // кол-во элементов
-        return AlbumLibrary.list.count
+        return AlbumLibrary.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("AlbumCell", forIndexPath: indexPath) as! AlbumCell
         // настраиваем ячейку
-        cell.populate(AlbumLibrary.list[indexPath.row])
+        let album = AlbumLibrary.getAlbum(indexPath.row)
+        cell.populate(album)
         return cell
     }
 
     
     // MARK: - Navigation
    
-    // настраиваем ImageViewController
+    // настраиваем AlbumDetailsViewController
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let newVC = segue.destinationViewController as? ImageViewController {
+        if let newVC = segue.destinationViewController as? AlbumDetailsViewController {
             if let index = self.listTableView.indexPathForSelectedRow()?.row {
-                newVC.imageName = AlbumLibrary.list[index].coverImage
+                newVC.currentAlbum = AlbumLibrary.getAlbum(index)
             }
         }
     }

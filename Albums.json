@@ -1,0 +1,329 @@
+{
+  "Albums":[
+    {
+      "Name":"Violator",
+      "Artist":"Depeche Mode",
+      "Year":1990,
+      "CoverImage":"coverImg1",
+      "Tracks":[
+        {
+          "TrackNo":1,
+          "Name":"World in My Eyes",
+          "Duration":266
+        },
+        {
+          "TrackNo":2,
+          "Name":"Sweetest Perfection",
+          "Duration":283
+        },
+        {
+          "TrackNo":3,
+          "Name":"Personal Jesus",
+          "Duration":296
+        },
+        {
+          "TrackNo":4,
+          "Name":"Halo",
+          "Duration":270
+        },
+        {
+          "TrackNo":5,
+          "Name":"Waiting for the Night",
+          "Duration":367
+        },
+        {
+          "TrackNo":6,
+          "Name":"Enjoy the Silence",
+          "Duration":260
+        },
+        {
+          "TrackNo":7,
+          "Name":"Policy of Truth",
+          "Duration":295
+        },
+        {
+          "TrackNo":8,
+          "Name":"Blue Dress",
+          "Duration":258
+        },
+        {
+          "TrackNo":9,
+          "Name":"Clean",
+          "Duration":328
+        }
+      ]
+    },
+    {
+      "Name":"Meet the Beatles",
+      "Artist":"The Beatles",
+      "Year":1964,
+      "CoverImage":"coverImg2",
+      "Tracks":[
+        {
+          "TrackNo":1,
+          "Name":"I Want To Hold Your Hand",
+          "Duration":144
+        },
+        {
+          "TrackNo":2,
+          "Name":"I Saw Her Standing There",
+          "Duration":170
+        },
+        {
+          "TrackNo":3,
+          "Name":"This Boy",
+          "Duration":131
+        },
+        {
+          "TrackNo":4,
+          "Name":"It Won't Be Long",
+          "Duration":131
+        },
+        {
+          "TrackNo":5,
+          "Name":"All I've Got To Do",
+          "Duration":125
+        },
+        {
+          "TrackNo":6,
+          "Name":"All My Loving",
+          "Duration":124
+        },
+        {
+          "TrackNo":7,
+          "Name":"Don't Bother Me",
+          "Duration":148
+        },
+        {
+          "TrackNo":8,
+          "Name":"Little Child",
+          "Duration":106
+        },
+        {
+          "TrackNo":9,
+          "Name":"Till There Was You",
+          "Duration":132
+        },
+        {
+          "TrackNo":10,
+          "Name":"Hold Me Tight",
+          "Duration":150
+        },
+        {
+          "TrackNo":11,
+          "Name":"I Wanna Be Your Man",
+          "Duration":119
+        },
+        {
+          "TrackNo":12,
+          "Name":"Not A Second Time",
+          "Duration":123
+        }
+      ]
+    },
+    {
+      "Name":"Yellow Submarine",
+      "Artist":"The Beatles",
+      "Year":1969,
+      "CoverImage":"coverImg3",
+      "Tracks":[
+        {
+          "TrackNo":1,
+          "Name":"Yellow Submarine",
+          "Duration":154
+        },
+        {
+          "TrackNo":2,
+          "Name":"Only a Northern Song",
+          "Duration":204
+        },
+        {
+          "TrackNo":3,
+          "Name":"All Together Now",
+          "Duration":133
+        },
+        {
+          "TrackNo":4,
+          "Name":"Hey Bulldog",
+          "Duration":194
+        },
+        {
+          "TrackNo":5,
+          "Name":"It’s All Too Much",
+          "Duration":385
+        },
+        {
+          "TrackNo":6,
+          "Name":"All You Need Is Love",
+          "Duration":224
+        },
+        {
+          "TrackNo":7,
+          "Name":"Pepperland",
+          "Duration":141
+        },
+        {
+          "TrackNo":8,
+          "Name":"Sea of Time",
+          "Duration":180
+        },
+        {
+          "TrackNo":9,
+          "Name":"Sea of Holes",
+          "Duration":137
+        },
+        {
+          "TrackNo":10,
+          "Name":"Sea of Monsters",
+          "Duration":217
+        },
+        {
+          "TrackNo":11,
+          "Name":"March of the Meanies",
+          "Duration":142
+        },
+        {
+          "TrackNo":12,
+          "Name":"Pepperland Laid Waste",
+          "Duration":139
+        },
+        {
+          "TrackNo":13,
+          "Name":"Yellow Submarine in Pepperland",
+          "Duration":133
+        }
+      ]
+    },
+    {
+      "Name":"Wind of Change",
+      "Artist":"Scorpions",
+      "Year":1990,
+      "CoverImage":"coverImg4",
+      "Tracks":[        
+        {
+          "TrackNo":1,
+          "Name":"Wind Of Change",
+          "Duration":310
+        },
+        {
+          "TrackNo":2,
+          "Name":"Restless Nights",
+          "Duration":344
+        }
+      ]
+    },
+    {
+      "Name":"Nothing But The Best",
+      "Artist":"Frank Sinatra",
+      "Year":2008,
+      "CoverImage":"coverImg5",
+      "Tracks":[
+        {
+          "TrackNo":1,
+          "Name":"Come Fly With Me",
+          "Duration":194
+        },
+        {
+          "TrackNo":2,
+          "Name":"The Best Is Yet To Come",
+          "Duration":176
+        },
+        {
+          "TrackNo":3,
+          "Name":"The Way You Look Tonight",
+          "Duration":202
+        },
+        {
+          "TrackNo":4,
+          "Name":"Luck Be A Lady",
+          "Duration":315
+        },
+        {
+          "TrackNo":5,
+          "Name":"Bewitched",
+          "Duration":180
+        },
+        {
+          "TrackNo":6,
+          "Name":"The Good Life",
+          "Duration":147
+        },
+        {
+          "TrackNo":7,
+          "Name":"The Girl From Ipanema",
+          "Duration":194
+        },
+        {
+          "TrackNo":8,
+          "Name":"Fly Me To The Moon",
+          "Duration":148
+        },
+        {
+          "TrackNo":9,
+          "Name":"Summer Wind",
+          "Duration":175
+        },
+        {
+          "TrackNo":10,
+          "Name":"Strangers In The Night",
+          "Duration":165
+        },
+        {
+          "TrackNo":11,
+          "Name":"Call Me Irresponsible",
+          "Duration":176
+        },
+        {
+          "TrackNo":12,
+          "Name":"Somethin' Stupid",
+          "Duration":160
+        },
+        {
+          "TrackNo":13,
+          "Name":"My Kind Of Town",
+          "Duration":191
+        },
+        {
+          "TrackNo":14,
+          "Name":"It Was A Very Good Year",
+          "Duration":267
+        },
+        {
+          "TrackNo":"15",
+          "Name":"That's Life",
+          "Duration":187
+        },
+        {
+          "TrackNo":16,
+          "Name":"Moonlight Serenade",
+          "Duration":208
+        },
+        {
+          "TrackNo":17,
+          "Name":"Nothing But The Best",
+          "Duration":180
+        },
+        {
+          "TrackNo":18,
+          "Name":"Drinking Again",
+          "Duration":195
+        },
+        {
+          "TrackNo":19,
+          "Name":"All My Tomorrows",
+          "Duration":275
+        },
+        {
+          "TrackNo":20,
+          "Name":"My Way",
+          "Duration":276
+        },
+        {
+          "TrackNo":21,
+          "Name":"Theme From New York, New York",
+          "Duration":205
+        }
+      ]
+    }
+  ]
+}
