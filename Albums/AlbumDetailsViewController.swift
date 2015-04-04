@@ -26,6 +26,7 @@ class AlbumDetailsViewController: UIViewController, UITableViewDataSource {
         artistName.text = currentAlbum.artist
         albumYear.text = String(currentAlbum.year)
         tracksInfo.text = currentAlbum.tracksSummary
+        title = "Альбом"
     }
         
     // MARK: - Table view data source
