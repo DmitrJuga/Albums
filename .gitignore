@@ -1,6 +1,6 @@
 # Exclude personal Xcode user settings
 xcuserdata/
-xcworkspace/
+*.xcworkspace/
 Pods/
 Podfile
-.lock
+*.lock
