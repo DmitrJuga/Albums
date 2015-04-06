@@ -1,5 +1,5 @@
 //
-//  GalaryViewController.swift
+//  GalleryViewController.swift
 //  Albums
 //
 //  Created by DmitrJuga on 30.03.15.
@@ -14,7 +14,7 @@ enum RollDirection: Int {
     case next = 1
 }
 
-class GalaryViewController: UIViewController {
+class GalleryViewController: UIViewController {
 
     
     @IBOutlet weak var albumView: UIImageView!
@@ -28,8 +28,14 @@ class GalaryViewController: UIViewController {
     var albumIndex = 0
     var currentAlbum: Album!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        albumIndex = AlbumLibrary.count - 1
+        refresh()
+    }
+    
+    // обновление
+    func refresh() {
         outImageView.hidden = true
         if AlbumLibrary.count != 0 {
             currentAlbum = AlbumLibrary.getAlbum(albumIndex)
@@ -41,11 +47,10 @@ class GalaryViewController: UIViewController {
             nextBtn.hidden = true
             detailBtn.hidden = true
             albumView.image = UIImage(named: "coverImg0")
-            albumName.text = "#Альбомы не загружены!"
-            artistName.text = ""
+            albumName.text = "Нет альбомов"
+            artistName.text = "Нажмите [+] чтобы загрузить"
         }
     }
-
     
     // Карусель
     func rollCarousel(direction: RollDirection) {
@@ -99,9 +104,9 @@ class GalaryViewController: UIViewController {
     
     // MARK: - Navigation
     
-    // настраиваем AlbumDetailsViewController
+    // настраиваем TracksViewController
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let newVC = segue.destinationViewController as? AlbumDetailsViewController {
+        if let newVC = segue.destinationViewController as? TracksViewController {
                 newVC.currentAlbum = AlbumLibrary.getAlbum(albumIndex)
         }
     }
