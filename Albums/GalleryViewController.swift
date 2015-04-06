@@ -28,8 +28,8 @@ class GalleryViewController: UIViewController {
     var albumIndex = 0
     var currentAlbum: Album!
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         albumIndex = AlbumLibrary.count - 1
         refresh()
     }
@@ -38,6 +38,9 @@ class GalleryViewController: UIViewController {
     func refresh() {
         outImageView.hidden = true
         if AlbumLibrary.count != 0 {
+            prevBtn.hidden = false
+            nextBtn.hidden = false
+            detailBtn.hidden = false
             currentAlbum = AlbumLibrary.getAlbum(albumIndex)
             albumView.image = UIImage(named: currentAlbum.coverImage)
             albumName.text = currentAlbum.name
