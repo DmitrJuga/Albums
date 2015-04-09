@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7528.3" systemVersion="14D127a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="apF-2J-SvC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7528.3" systemVersion="14D130a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="apF-2J-SvC">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7518.3"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -18,20 +18,131 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Uwd-NY-yk8" kind="relationship" relationship="rootViewController" id="4ne-zA-Lu7"/>
+                        <segue destination="Uwd-NY-yk8" kind="relationship" relationship="rootViewController" id="ms0-k1-iCD"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOS-L2-kGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="694.5" y="414.5"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Add Album View Controlle-->
+        <scene sceneID="2LO-co-OFQ">
+            <objects>
+                <viewController title="Добавление альбома" id="VLu-v4-ryL" userLabel="Add Album View Controlle" customClass="AddAlbumViewController" customModule="Albums" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KO0-Nu-Mq7"/>
+                        <viewControllerLayoutGuide type="bottom" id="XqG-ca-3P5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1tb-C3-y0g">
+                        <rect key="frame" x="0.0" y="64" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUC-sO-D1S">
+                                <rect key="frame" x="0.0" y="64" width="375" height="73"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Список альбомов с сервера" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkU-Bp-qe1">
+                                        <rect key="frame" x="79" y="14" width="216" height="20"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="KeH-Hh-Anp">
+                                        <rect key="frame" x="177" y="38" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите альбом для добавления в фонотеку" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hkd-3z-FsB">
+                                        <rect key="frame" x="62" y="41" width="251" height="14"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="mkU-Bp-qe1" secondAttribute="centerX" constant="0.5" id="9oX-BU-eqC"/>
+                                    <constraint firstAttribute="bottom" secondItem="Hkd-3z-FsB" secondAttribute="bottom" constant="18" id="KeW-BI-Wk3"/>
+                                    <constraint firstItem="mkU-Bp-qe1" firstAttribute="top" secondItem="AUC-sO-D1S" secondAttribute="top" constant="14" id="MGJ-cd-l6R"/>
+                                    <constraint firstAttribute="centerX" secondItem="KeH-Hh-Anp" secondAttribute="centerX" constant="0.5" id="YQs-6E-Wlv"/>
+                                    <constraint firstAttribute="bottom" secondItem="KeH-Hh-Anp" secondAttribute="bottom" constant="15" id="bcd-Ay-1jQ"/>
+                                    <constraint firstAttribute="centerX" secondItem="Hkd-3z-FsB" secondAttribute="centerX" id="hHM-dM-Qxn"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fg9-HR-ddc">
+                                <rect key="frame" x="16" y="145" width="359" height="522"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="t2n-uM-jFa" detailTextLabel="Vq0-UO-4AR" style="IBUITableViewCellStyleSubtitle" id="Sdf-bE-u4V">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sdf-bE-u4V" id="KRu-8Z-UaE">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="t2n-uM-jFa">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Vq0-UO-4AR">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="VLu-v4-ryL" id="ahF-XG-NX0"/>
+                                    <outlet property="delegate" destination="VLu-v4-ryL" id="4lU-Aq-Jp0"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fg9-HR-ddc" firstAttribute="leading" secondItem="1tb-C3-y0g" secondAttribute="leading" constant="16" id="5hz-eT-kRX"/>
+                            <constraint firstItem="AUC-sO-D1S" firstAttribute="top" secondItem="KO0-Nu-Mq7" secondAttribute="bottom" id="ByQ-Dz-RzC"/>
+                            <constraint firstAttribute="trailing" secondItem="fg9-HR-ddc" secondAttribute="trailing" id="RCl-ET-DN0"/>
+                            <constraint firstItem="fg9-HR-ddc" firstAttribute="top" secondItem="AUC-sO-D1S" secondAttribute="bottom" constant="8" symbolic="YES" id="TPa-tY-N1L"/>
+                            <constraint firstItem="fg9-HR-ddc" firstAttribute="trailing" secondItem="AUC-sO-D1S" secondAttribute="trailing" id="Y3K-45-ZTZ"/>
+                            <constraint firstAttribute="bottom" secondItem="AUC-sO-D1S" secondAttribute="bottom" constant="530" id="gu1-K9-Set"/>
+                            <constraint firstItem="fg9-HR-ddc" firstAttribute="bottom" secondItem="XqG-ca-3P5" secondAttribute="top" id="p4E-pG-bN6"/>
+                            <constraint firstItem="fg9-HR-ddc" firstAttribute="leading" secondItem="AUC-sO-D1S" secondAttribute="leading" constant="16" id="wJR-IS-PB7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Добавление альбома" id="Wrh-W1-sbW">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="cancel" id="ohI-6X-5AY">
+                            <connections>
+                                <action selector="btnCancel:" destination="VLu-v4-ryL" id="Ll3-9w-Chx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="indicator" destination="KeH-Hh-Anp" id="3kt-4O-fuj"/>
+                        <outlet property="label1" destination="mkU-Bp-qe1" id="AVT-0k-6sN"/>
+                        <outlet property="label2" destination="Hkd-3z-FsB" id="lOX-9v-6XP"/>
+                        <outlet property="tableView" destination="fg9-HR-ddc" id="wwe-Xp-tqt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1nK-u4-0AG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1198.5" y="1237.5"/>
+        </scene>
+        <!--Tab Bar View Controller-->
         <scene sceneID="9HP-Zb-4Jw">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Uwd-NY-yk8" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Uwd-NY-yk8" userLabel="Tab Bar View Controller" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="yt8-R4-S28"/>
+                    <navigationItem key="navigationItem" title="Фонотека" id="yt8-R4-S28" userLabel="Navigation Item">
+                        <barButtonItem key="backBarButtonItem" title="Назад" id="a71-6N-1b7"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="hRa-bY-nMd">
+                            <connections>
+                                <segue destination="Sb1-lH-92n" kind="presentation" id="f3H-UG-6Z1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="K0V-av-oCQ">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -45,10 +156,10 @@
             </objects>
             <point key="canvasLocation" x="1198.5" y="414.5"/>
         </scene>
-        <!--List View Controller-->
+        <!--Albums View Controller-->
         <scene sceneID="KRe-x2-12V">
             <objects>
-                <viewController id="vBc-BN-b0S" userLabel="List View Controller" customClass="ListViewController" customModule="Albums" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vBc-BN-b0S" userLabel="Albums View Controller" customClass="AlbumsViewController" customModule="Albums" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ycs-F4-hoQ"/>
                         <viewControllerLayoutGuide type="bottom" id="d2v-t2-YQA"/>
@@ -70,7 +181,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Артист" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NwE-tW-Car">
                                                     <rect key="frame" x="78" y="26" width="47" height="17"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coverImg0" translatesAutoresizingMaskIntoConstraints="NO" id="OBZ-0W-EMc">
@@ -83,13 +194,13 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Альбом" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVy-6Z-nnD">
                                                     <rect key="frame" x="78" y="8" width="60" height="20"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Песен:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFb-5M-eZ8">
                                                     <rect key="frame" x="78" y="46" width="40" height="15"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -129,17 +240,17 @@
                     <tabBarItem key="tabBarItem" title="Список" image="List" id="NJb-PO-xei"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="listTableView" destination="HMN-5v-DPK" id="dcK-8E-Ta4"/>
+                        <outlet property="tableView" destination="HMN-5v-DPK" id="Z7J-9A-zF1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PPU-VG-eah" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1685.5" y="837.5"/>
+            <point key="canvasLocation" x="1689.5" y="801.5"/>
         </scene>
-        <!--Album Details View Controller-->
+        <!--Tracks View Controller-->
         <scene sceneID="I6w-O0-uhM">
             <objects>
-                <viewController id="Jq5-dE-o3c" customClass="AlbumDetailsViewController" customModule="Albums" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Jq5-dE-o3c" userLabel="Tracks View Controller" customClass="TracksViewController" customModule="Albums" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0hJ-an-Il9"/>
                         <viewControllerLayoutGuide type="bottom" id="qVX-ti-Stw"/>
@@ -154,25 +265,25 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Альбом" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qCH-ue-lva">
                                         <rect key="frame" x="136" y="21" width="207" height="20"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Артист" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHH-sn-nWB">
                                         <rect key="frame" x="136" y="38" width="207" height="20"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Песен:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2F-Wd-oPx">
                                         <rect key="frame" x="136" y="98" width="40" height="15"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Год" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBB-YK-QBe">
                                         <rect key="frame" x="136" y="66" width="25" height="17"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coverImg0" translatesAutoresizingMaskIntoConstraints="NO" id="tEv-aX-CAd">
@@ -214,19 +325,19 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R70-FJ-qlO">
                                                     <rect key="frame" x="8" y="9" width="26" height="17"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Песня" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqv-fS-9Hx">
-                                                    <rect key="frame" x="42" y="8" width="292" height="20"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <rect key="frame" x="42" y="9" width="292" height="17"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2F0-eF-Liv">
                                                     <rect key="frame" x="342" y="10" width="25" height="15"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -275,12 +386,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2CQ-wA-FK1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2257.5" y="414.5"/>
+            <point key="canvasLocation" x="2186.5" y="414.5"/>
         </scene>
-        <!--Galery View Controller-->
+        <!--Gallery View Controller-->
         <scene sceneID="T4K-qc-hcT">
             <objects>
-                <viewController id="ms7-j6-dHU" userLabel="Galery View Controller" customClass="GalaryViewController" customModule="Albums" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ms7-j6-dHU" userLabel="Gallery View Controller" customClass="GalleryViewController" customModule="Albums" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7g1-oH-KPe"/>
                         <viewControllerLayoutGuide type="bottom" id="xO7-bH-ar0"/>
@@ -313,23 +424,23 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Альбом" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fd-Ft-71y">
                                         <rect key="frame" x="141" y="8" width="60" height="20"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhW-YR-h1k">
-                                        <rect key="frame" x="134" y="40" width="76" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="Открыть &gt;"/>
-                                        <connections>
-                                            <segue destination="Jq5-dE-o3c" kind="show" id="yVV-9t-Qdy"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Артист" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ff-5R-B2r">
                                         <rect key="frame" x="148" y="26" width="47" height="17"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhW-YR-h1k">
+                                        <rect key="frame" x="131" y="38" width="80" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Открыть &gt;"/>
+                                        <connections>
+                                            <segue destination="Jq5-dE-o3c" kind="show" id="yVV-9t-Qdy"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -349,13 +460,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lts-mO-r29" userLabel="ImageContainer">
                                 <rect key="frame" x="16" y="64" width="343" height="343"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coverImg0" translatesAutoresizingMaskIntoConstraints="NO" id="YEy-Gr-Ub0" userLabel="AlbumImage">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YEy-Gr-Ub0" userLabel="AlbumImage">
                                         <rect key="frame" x="8" y="8" width="327" height="327"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="YEy-Gr-Ub0" secondAttribute="height" multiplier="1:1" id="wS6-DZ-VMJ"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coverImg0" translatesAutoresizingMaskIntoConstraints="NO" id="1gE-kY-eRe" userLabel="OutImage">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1gE-kY-eRe" userLabel="OutImage">
                                         <rect key="frame" x="8" y="8" width="327" height="327"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="1gE-kY-eRe" secondAttribute="height" multiplier="1:1" id="dgN-XY-dRA"/>
@@ -398,7 +509,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z2u-dr-qhu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1685.5" y="112.5"/>
+            <point key="canvasLocation" x="1689.5" y="50.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hDm-4O-whI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Sb1-lH-92n" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cgL-Rz-BBW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="VLu-v4-ryL" kind="relationship" relationship="rootViewController" id="mfr-x1-vjZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XD1-sB-BkI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="694.5" y="1237.5"/>
         </scene>
     </scenes>
     <resources>
