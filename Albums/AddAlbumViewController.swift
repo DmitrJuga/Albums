@@ -13,11 +13,11 @@ import Alamofire
 class AddAlbumViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var albums = [JSON]()
-    
-    @IBOutlet weak var tableView: UITableView!
+
     @IBOutlet weak var label1: UILabel!
     @IBOutlet weak var label2: UILabel!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         
@@ -50,6 +50,7 @@ class AddAlbumViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // кол-во элементов
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return albums.count
     }
     
@@ -64,7 +65,8 @@ class AddAlbumViewController: UIViewController, UITableViewDataSource, UITableVi
 
     // сохраняем выбранный альбом в БД
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        AlbumLibrary.addAlbum(albums[indexPath.row])
+        
+        AlbumLibrary.sharedInstance.addAlbum(albums[indexPath.row])
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

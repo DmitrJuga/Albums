@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7528.3" systemVersion="14D130a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="apF-2J-SvC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="apF-2J-SvC">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7518.3"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -38,19 +38,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUC-sO-D1S">
-                                <rect key="frame" x="0.0" y="64" width="375" height="73"/>
+                                <rect key="frame" x="-8" y="64" width="383" height="73"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Список альбомов с сервера" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkU-Bp-qe1">
-                                        <rect key="frame" x="79" y="14" width="216" height="20"/>
+                                        <rect key="frame" x="83" y="14" width="216" height="20"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="KeH-Hh-Anp">
-                                        <rect key="frame" x="177" y="38" width="20" height="20"/>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="KeH-Hh-Anp">
+                                        <rect key="frame" x="181" y="38" width="20" height="20"/>
                                     </activityIndicatorView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите альбом для добавления в фонотеку" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hkd-3z-FsB">
-                                        <rect key="frame" x="62" y="41" width="251" height="14"/>
+                                        <rect key="frame" x="66" y="41" width="251" height="14"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -58,16 +58,15 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="mkU-Bp-qe1" secondAttribute="centerX" constant="0.5" id="9oX-BU-eqC"/>
-                                    <constraint firstAttribute="bottom" secondItem="Hkd-3z-FsB" secondAttribute="bottom" constant="18" id="KeW-BI-Wk3"/>
-                                    <constraint firstItem="mkU-Bp-qe1" firstAttribute="top" secondItem="AUC-sO-D1S" secondAttribute="top" constant="14" id="MGJ-cd-l6R"/>
-                                    <constraint firstAttribute="centerX" secondItem="KeH-Hh-Anp" secondAttribute="centerX" constant="0.5" id="YQs-6E-Wlv"/>
-                                    <constraint firstAttribute="bottom" secondItem="KeH-Hh-Anp" secondAttribute="bottom" constant="15" id="bcd-Ay-1jQ"/>
-                                    <constraint firstAttribute="centerX" secondItem="Hkd-3z-FsB" secondAttribute="centerX" id="hHM-dM-Qxn"/>
+                                    <constraint firstItem="mkU-Bp-qe1" firstAttribute="top" secondItem="AUC-sO-D1S" secondAttribute="top" constant="14" id="0ha-NM-MeX"/>
+                                    <constraint firstItem="Hkd-3z-FsB" firstAttribute="top" secondItem="mkU-Bp-qe1" secondAttribute="bottom" constant="7" id="7rx-O0-yic"/>
+                                    <constraint firstAttribute="height" constant="73" id="Gyu-Oh-5Hx"/>
+                                    <constraint firstAttribute="centerX" secondItem="Hkd-3z-FsB" secondAttribute="centerX" id="kGI-vW-nLu"/>
+                                    <constraint firstAttribute="centerX" secondItem="mkU-Bp-qe1" secondAttribute="centerX" constant="0.5" id="tq5-J2-kEp"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fg9-HR-ddc">
-                                <rect key="frame" x="16" y="145" width="359" height="522"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fg9-HR-ddc">
+                                <rect key="frame" x="8" y="145" width="359" height="522"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="t2n-uM-jFa" detailTextLabel="Vq0-UO-4AR" style="IBUITableViewCellStyleSubtitle" id="Sdf-bE-u4V">
@@ -99,18 +98,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="fg9-HR-ddc" firstAttribute="leading" secondItem="1tb-C3-y0g" secondAttribute="leading" constant="16" id="5hz-eT-kRX"/>
-                            <constraint firstItem="AUC-sO-D1S" firstAttribute="top" secondItem="KO0-Nu-Mq7" secondAttribute="bottom" id="ByQ-Dz-RzC"/>
-                            <constraint firstAttribute="trailing" secondItem="fg9-HR-ddc" secondAttribute="trailing" id="RCl-ET-DN0"/>
-                            <constraint firstItem="fg9-HR-ddc" firstAttribute="top" secondItem="AUC-sO-D1S" secondAttribute="bottom" constant="8" symbolic="YES" id="TPa-tY-N1L"/>
-                            <constraint firstItem="fg9-HR-ddc" firstAttribute="trailing" secondItem="AUC-sO-D1S" secondAttribute="trailing" id="Y3K-45-ZTZ"/>
-                            <constraint firstAttribute="bottom" secondItem="AUC-sO-D1S" secondAttribute="bottom" constant="530" id="gu1-K9-Set"/>
+                            <constraint firstItem="fg9-HR-ddc" firstAttribute="leading" secondItem="1tb-C3-y0g" secondAttribute="leading" constant="8" id="5hz-eT-kRX"/>
+                            <constraint firstAttribute="trailing" secondItem="fg9-HR-ddc" secondAttribute="trailing" constant="8" id="RCl-ET-DN0"/>
+                            <constraint firstItem="fg9-HR-ddc" firstAttribute="top" secondItem="AUC-sO-D1S" secondAttribute="bottom" constant="8" id="fwu-OD-7Zg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AUC-sO-D1S" secondAttribute="trailing" constant="-16" id="hyu-zb-8ol"/>
                             <constraint firstItem="fg9-HR-ddc" firstAttribute="bottom" secondItem="XqG-ca-3P5" secondAttribute="top" id="p4E-pG-bN6"/>
-                            <constraint firstItem="fg9-HR-ddc" firstAttribute="leading" secondItem="AUC-sO-D1S" secondAttribute="leading" constant="16" id="wJR-IS-PB7"/>
+                            <constraint firstItem="AUC-sO-D1S" firstAttribute="top" secondItem="KO0-Nu-Mq7" secondAttribute="bottom" id="qo2-69-mjL"/>
+                            <constraint firstItem="AUC-sO-D1S" firstAttribute="leading" secondItem="1tb-C3-y0g" secondAttribute="leadingMargin" constant="-24" id="rA1-zv-yJc"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Добавление альбома" id="Wrh-W1-sbW">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="cancel" id="ohI-6X-5AY">
+                    <navigationItem key="navigationItem" title="Добавление" id="Wrh-W1-sbW">
+                        <barButtonItem key="rightBarButtonItem" title="Отмена" style="done" id="ohI-6X-5AY">
                             <connections>
                                 <action selector="btnCancel:" destination="VLu-v4-ryL" id="Ll3-9w-Chx"/>
                             </connections>
@@ -134,7 +132,6 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Uwd-NY-yk8" userLabel="Tab Bar View Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Фонотека" id="yt8-R4-S28" userLabel="Navigation Item">
-                        <barButtonItem key="backBarButtonItem" title="Назад" id="a71-6N-1b7"/>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="hRa-bY-nMd">
                             <connections>
                                 <segue destination="Sb1-lH-92n" kind="presentation" id="f3H-UG-6Z1"/>
@@ -311,7 +308,7 @@
                                     <constraint firstItem="bBB-YK-QBe" firstAttribute="top" secondItem="wHH-sn-nWB" secondAttribute="bottom" constant="8" id="xqO-YG-53T"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="36" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Zco-g2-Exx">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="38" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="Zco-g2-Exx">
                                 <rect key="frame" x="0.0" y="212" width="375" height="406"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -323,20 +320,20 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A12" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R70-FJ-qlO">
-                                                    <rect key="frame" x="8" y="9" width="26" height="17"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Песня" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqv-fS-9Hx">
-                                                    <rect key="frame" x="42" y="9" width="292" height="17"/>
+                                                    <rect key="frame" x="8" y="10" width="26" height="17"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2F0-eF-Liv">
-                                                    <rect key="frame" x="342" y="10" width="25" height="15"/>
+                                                    <rect key="frame" x="342" y="11" width="25" height="15"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Песня" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqv-fS-9Hx">
+                                                    <rect key="frame" x="42" y="10" width="292" height="17"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>

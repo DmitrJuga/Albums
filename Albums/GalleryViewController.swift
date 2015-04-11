@@ -25,23 +25,27 @@ class GalleryViewController: UIViewController {
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var detailBtn: UIButton!
     
-    var albumIndex = 0
-    var currentAlbum: Album!
+    private var albumIndex = 0
+    private var currentAlbum: Album!
+    private let library = AlbumLibrary.sharedInstance
     
     override func viewWillAppear(animated: Bool) {
+        
         super.viewWillAppear(animated)
-        albumIndex = AlbumLibrary.count - 1
+        
+        albumIndex = library.albums.count - 1
         refresh()
     }
     
     // обновление
     func refresh() {
+        
         outImageView.hidden = true
-        if AlbumLibrary.count != 0 {
+        if library.albums.count != 0 {
             prevBtn.hidden = false
             nextBtn.hidden = false
             detailBtn.hidden = false
-            currentAlbum = AlbumLibrary.getAlbum(albumIndex)
+            currentAlbum = library.albums[albumIndex]
             albumView.image = UIImage(named: currentAlbum.coverImage)
             albumName.text = currentAlbum.name
             artistName.text = currentAlbum.artist
@@ -51,7 +55,7 @@ class GalleryViewController: UIViewController {
             detailBtn.hidden = true
             albumView.image = UIImage(named: "coverImg0")
             albumName.text = "Нет альбомов"
-            artistName.text = "Нажмите [+] чтобы загрузить"
+            artistName.text = "Нажмите (+) чтобы загрузить"
         }
     }
     
@@ -61,9 +65,9 @@ class GalleryViewController: UIViewController {
         // смена номера текущего альбома
         albumIndex += direction.rawValue
         // корректировка номера для зацикливания
-        albumIndex = (albumIndex > AlbumLibrary.count - 1) ? 0 : (albumIndex < 0) ? AlbumLibrary.count - 1 : albumIndex
+        albumIndex = (albumIndex > library.albums.count - 1) ? 0 : (albumIndex < 0) ? library.albums.count - 1 : albumIndex
         // загрузка текущего альбома
-        currentAlbum = AlbumLibrary.getAlbum(albumIndex)
+        currentAlbum = library.albums[albumIndex]
         
         // апдейт подписей
         albumName.text = currentAlbum.name
@@ -97,10 +101,12 @@ class GalleryViewController: UIViewController {
     }
     
     @IBAction func nextBtn(sender: UIButton) {
+        
         rollCarousel(.next)
     }
     
     @IBAction func prevBtn(sender: UIButton) {
+        
         rollCarousel(.prev)
     }
 
@@ -109,8 +115,9 @@ class GalleryViewController: UIViewController {
     
     // настраиваем TracksViewController
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         if let newVC = segue.destinationViewController as? TracksViewController {
-                newVC.currentAlbum = AlbumLibrary.getAlbum(albumIndex)
+                newVC.currentAlbum = currentAlbum
         }
     }
     

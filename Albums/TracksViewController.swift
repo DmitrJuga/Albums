@@ -11,7 +11,7 @@ import UIKit
 class TracksViewController: UIViewController, UITableViewDataSource {
     
     var currentAlbum: Album!
-    var tracks = [Track]()
+    private var tracks = [Track]()
     
     @IBOutlet weak var albumCover: UIImageView!
     @IBOutlet weak var albumName: UILabel!
@@ -20,28 +20,34 @@ class TracksViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var tracksInfo: UILabel!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        title = "Альбом"
+        
+        // настройка вида
         albumCover.image = UIImage(named: currentAlbum.coverImage)
         albumName.text = currentAlbum.name
         artistName.text = currentAlbum.artist
         albumYear.text = String(currentAlbum.year)
         tracksInfo.text = currentAlbum.tracksSummary
-        tracks = currentAlbum.tracks.sorted{$0.trackNo < $1.trackNo}
+        
+        // сортировка троков по номеру трека -> в отдельный массив
+        tracks = currentAlbum.tracks.sorted{ $0.trackNo < $1.trackNo }
     }
         
+    
     // MARK: - Table view data source
     
+    // кол-во элементов
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // кол-во элементов
+        
         return tracks.count
     }
     
+    // настраиваем ячейку
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TrackCell", forIndexPath: indexPath) as! TrackCell
-        // настраиваем ячейку
-        let track = tracks[indexPath.row]
-        cell.populate(track)
+        
+        cell.populate(tracks[indexPath.row])
         return cell
     }
 
