@@ -17,6 +17,7 @@ enum RollDirection: Int {
 class GalleryViewController: UIViewController {
 
     
+    @IBOutlet weak var imageContainer: UIView!
     @IBOutlet weak var albumView: UIImageView!
     @IBOutlet weak var outImageView: UIImageView!
     @IBOutlet weak var albumName: UILabel!
@@ -28,7 +29,23 @@ class GalleryViewController: UIViewController {
     var albumIndex = 0
     var currentAlbum: Album!
     
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        // добавляем распознавание свайпов
+        let gRecog1 = UISwipeGestureRecognizer(target: self, action: "nextBtn:")
+        gRecog1.direction = .Left
+        imageContainer.addGestureRecognizer(gRecog1)
+        let gRecog2 = UISwipeGestureRecognizer(target: self, action: "prevBtn:")
+        gRecog2.direction = .Right
+        imageContainer.addGestureRecognizer(gRecog2)
+    }
+    
+    
     override func viewWillAppear(animated: Bool) {
+        
         super.viewWillAppear(animated)
         albumIndex = AlbumLibrary.count - 1
         refresh()
@@ -36,22 +53,26 @@ class GalleryViewController: UIViewController {
     
     // обновление
     func refresh() {
+        
         outImageView.hidden = true
-        if AlbumLibrary.count != 0 {
+        if AlbumLibrary.count > 1 {
             prevBtn.hidden = false
             nextBtn.hidden = false
+        } else {
+            prevBtn.hidden = true
+            nextBtn.hidden = true
+        }
+        if AlbumLibrary.count != 0 {
             detailBtn.hidden = false
             currentAlbum = AlbumLibrary.getAlbum(albumIndex)
             albumView.image = UIImage(named: currentAlbum.coverImage)
             albumName.text = currentAlbum.name
             artistName.text = currentAlbum.artist
         } else {
-            prevBtn.hidden = true
-            nextBtn.hidden = true
             detailBtn.hidden = true
             albumView.image = UIImage(named: "coverImg0")
             albumName.text = "Нет альбомов"
-            artistName.text = "Нажмите [+] чтобы загрузить"
+            artistName.text = "Нажмите (+) чтобы загрузить"
         }
     }
     
@@ -97,11 +118,15 @@ class GalleryViewController: UIViewController {
     }
     
     @IBAction func nextBtn(sender: UIButton) {
-        rollCarousel(.next)
+        if AlbumLibrary.count > 1 {
+            rollCarousel(.next)
+        }
     }
     
     @IBAction func prevBtn(sender: UIButton) {
-        rollCarousel(.prev)
+        if AlbumLibrary.count > 1 {
+            rollCarousel(.prev)
+        }
     }
 
     
