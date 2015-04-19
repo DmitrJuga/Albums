@@ -24,7 +24,6 @@ class TracksViewController: UIViewController, UITableViewDataSource {
         
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-
         
         // настройка вида
         albumCover.image = UIImage(named: currentAlbum.coverImage)
