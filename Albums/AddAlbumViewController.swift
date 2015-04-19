@@ -13,18 +13,21 @@ import Alamofire
 class AddAlbumViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     var albums = [JSON]()
-
+    
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var label1: UILabel!
     @IBOutlet weak var label2: UILabel!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
-    @IBOutlet weak var tableView: UITableView!
+   
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
+        
         label1.text = "Загрузка..."
         label2.hidden = true
-        indicator.hidden = false
+        indicator.startAnimating()
         // Загрузка списка альбомов с сервера parse.com
         var headers = Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders!
         headers["X-Parse-Application-Id"] = "Db5mlRZuLWCYRMw6WlWO4oXAZ0dEC4PbAwuRtjaw"
@@ -34,19 +37,22 @@ class AddAlbumViewController: UIViewController, UITableViewDataSource, UITableVi
             _, _, jsonData, _ in
             let json = JSON(jsonData!)
             self.albums = JSON(jsonData!)["results"].arrayValue
-            self.label1.text = "Найдено \(self.albums.count) альбомов"
-            self.label2.hidden = false
-            self.indicator.hidden = true
-            self.tableView.reloadData()
+                dispatch_async(dispatch_get_main_queue()) {
+                self.label1.text = "Найдено \(self.albums.count) альбомов"
+                self.label2.hidden = false
+                self.indicator.stopAnimating()
+                self.tableView.reloadData()
+            }
         }
     }
 
     @IBAction func btnCancel(sender: AnyObject) {
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 
     
-    // MARK: - Table view data source
+    // MARK: - TableViewDataSource
     
     // кол-во элементов
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,6 +62,7 @@ class AddAlbumViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // настраиваем ячейку
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         let album = albums[indexPath.row]
         cell.textLabel?.text = album["Name"].stringValue
@@ -63,6 +70,9 @@ class AddAlbumViewController: UIViewController, UITableViewDataSource, UITableVi
         return cell
     }
 
+
+    // MARK: - UITableViewDelegate
+    
     // сохраняем выбранный альбом в БД
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         

@@ -13,6 +13,7 @@ class TracksViewController: UIViewController, UITableViewDataSource {
     var currentAlbum: Album!
     private var tracks = [Track]()
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var albumCover: UIImageView!
     @IBOutlet weak var albumName: UILabel!
     @IBOutlet weak var artistName: UILabel!
@@ -22,6 +23,8 @@ class TracksViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
+
         
         // настройка вида
         albumCover.image = UIImage(named: currentAlbum.coverImage)
@@ -35,7 +38,7 @@ class TracksViewController: UIViewController, UITableViewDataSource {
     }
         
     
-    // MARK: - Table view data source
+    // MARK: - TableViewDataSource
     
     // кол-во элементов
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,6 +48,7 @@ class TracksViewController: UIViewController, UITableViewDataSource {
     
     // настраиваем ячейку
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("TrackCell", forIndexPath: indexPath) as! TrackCell
         
         cell.populate(tracks[indexPath.row])

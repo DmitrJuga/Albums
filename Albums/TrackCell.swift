@@ -16,6 +16,7 @@ class TrackCell: UITableViewCell {
     
     //Настройка ячейки в списке треков
     func populate(track: Track){
+        
         trackNo.text = String(track.trackNo)
         trackName.text = track.name
         trackDuration.text = track.formatedDurarion

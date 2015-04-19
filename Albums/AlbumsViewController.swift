@@ -12,26 +12,34 @@ class AlbumsViewController: UIViewController, UITableViewDataSource {
 
     
     @IBOutlet weak var tableView: UITableView!
+ 
     private let library = AlbumLibrary.sharedInstance
+    
+    override func viewDidLoad() {
+
+        super.viewDidLoad()
+        tableView.tableFooterView = UIView()
+    }
     
     override func viewWillAppear(animated: Bool) {
     
         super.viewWillAppear(animated)
-        
         tableView.reloadData()
     }
     
     
-    // MARK: - Table view data source
+    // MARK: - TableViewDataSource
     
     
     // кол-во элементов
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return library.albums.count
     }
     
     // настраиваем ячейку
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("AlbumCell", forIndexPath: indexPath) as! AlbumCell
         
         cell.populate(library.albums[indexPath.row])
@@ -40,6 +48,7 @@ class AlbumsViewController: UIViewController, UITableViewDataSource {
     
     // разрешаем редактировать
     func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        
         return true;
     }
 
