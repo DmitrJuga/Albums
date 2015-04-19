@@ -17,6 +17,7 @@ class AlbumCell: UITableViewCell {
     
     //Настройка ячейки в списке альбомов
     func populate(album: Album){
+        
         albumCover.image = UIImage(named: album.coverImage)
         albumName.text = album.name
         artistName.text = album.artist
