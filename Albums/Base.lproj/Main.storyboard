@@ -47,13 +47,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выберите альбом для добавления в фонотеку" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Hkd-3z-FsB">
-                                        <rect key="frame" x="24" y="48" width="272" height="15"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <rect key="frame" x="35" y="48" width="251" height="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="KeH-Hh-Anp">
-                                        <rect key="frame" x="150" y="46" width="20" height="20"/>
+                                        <rect key="frame" x="150" y="45" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
@@ -416,7 +416,7 @@
                                             <constraint firstAttribute="width" secondItem="YEy-Gr-Ub0" secondAttribute="height" multiplier="1:1" id="wS6-DZ-VMJ"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1gE-kY-eRe" userLabel="OutImage">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultCover" translatesAutoresizingMaskIntoConstraints="NO" id="1gE-kY-eRe" userLabel="OutImage">
                                         <rect key="frame" x="8" y="8" width="272" height="272"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="1gE-kY-eRe" secondAttribute="height" multiplier="1:1" id="dgN-XY-dRA"/>
@@ -437,15 +437,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MNQ-Sb-xBB" userLabel="ButtonsContainer">
                                 <rect key="frame" x="16" y="352" width="288" height="70"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6H-IA-AfX" userLabel="Prev">
-                                        <rect key="frame" x="0.0" y="3" width="64" height="64"/>
-                                        <state key="normal" image="Prev">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="prevBtnPressed:" destination="ms7-j6-dHU" eventType="touchUpInside" id="Xc4-Qi-cN6"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Альбом" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fd-Ft-71y">
                                         <rect key="frame" x="114" y="7" width="60" height="20"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
@@ -473,6 +464,15 @@
                                         </state>
                                         <connections>
                                             <action selector="nextBtnPressed:" destination="ms7-j6-dHU" eventType="touchUpInside" id="l3Q-gF-ANz"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6H-IA-AfX" userLabel="Prev">
+                                        <rect key="frame" x="0.0" y="3" width="64" height="64"/>
+                                        <state key="normal" image="Prev">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="prevBtnPressed:" destination="ms7-j6-dHU" eventType="touchUpInside" id="Xc4-Qi-cN6"/>
                                         </connections>
                                     </button>
                                 </subviews>
