@@ -8,13 +8,11 @@
 
 import UIKit
 
-enum RollDirection: Int {
-    case prev = -1
-    case next = 1
-}
 
 class GalleryViewController: UIViewController {
 
+    
+    @IBOutlet weak var imageContainer: UIView!
     @IBOutlet weak var albumView: UIImageView!
     @IBOutlet weak var outImageView: UIImageView!
     @IBOutlet weak var albumName: UILabel!
@@ -52,6 +50,13 @@ class GalleryViewController: UIViewController {
         setupUI()
         // подписываемся на нотификаций от AlbumLibrary
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("changeHandler:"), name: nil, object: library)
+        // добавляем распознавание свайпов
+        let gRecog1 = UISwipeGestureRecognizer(target: self, action: "nextBtnPressed:")
+        gRecog1.direction = .Left
+        imageContainer.addGestureRecognizer(gRecog1)
+        let gRecog2 = UISwipeGestureRecognizer(target: self, action: "prevBtnPressed:")
+        gRecog2.direction = .Right
+        imageContainer.addGestureRecognizer(gRecog2)
     }
     
     // обработчик нотификаций об изменениях в AlbumLibrary
@@ -68,15 +73,18 @@ class GalleryViewController: UIViewController {
     // начальная установка UI
     func setupUI() {
         outImageView.hidden = true
-        if library.albums.count != 0 {
+        if library.albums.count > 1 {
             prevBtn.hidden = false
             nextBtn.hidden = false
+        } else {
+            prevBtn.hidden = true
+            nextBtn.hidden = true
+        }
+        if library.albums.count != 0 {
             detailBtn.hidden = false
             currentAlbum = library.albums[currentIndex]
             albumView.image = currentAlbum.image
         } else {
-            prevBtn.hidden = true
-            nextBtn.hidden = true
             detailBtn.hidden = true
             albumView.image = UIImage(named: "defaultCover")
             albumName.text = "Нет альбомов"
@@ -110,15 +118,19 @@ class GalleryViewController: UIViewController {
                         }
     }
     
-    
+
 // MARK: - Action Handlers
     
     @IBAction func nextBtnPressed(sender: UIButton) {
-        albumIndex++
+        if library.albums.count > 1 {
+            albumIndex++
+        }
     }
     
     @IBAction func prevBtnPressed(sender: UIButton) {
-        albumIndex--
+        if library.albums.count > 1 {
+            albumIndex--
+        }
     }
 
     

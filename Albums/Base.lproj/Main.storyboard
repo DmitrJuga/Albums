@@ -516,8 +516,9 @@
                         <outlet property="albumName" destination="2fd-Ft-71y" id="lHp-mH-fJ2"/>
                         <outlet property="albumView" destination="YEy-Gr-Ub0" id="7WM-zk-4jy"/>
                         <outlet property="artistName" destination="3ff-5R-B2r" id="bQL-p5-Ywa"/>
-                        <outlet property="detailBtn" destination="nhW-YR-h1k" id="WqE-T3-mg3"/>
-                        <outlet property="nextBtn" destination="xHN-J9-HBY" id="9vM-4z-wZD"/>
+                        <outlet property="detailBtn" destination="nhW-YR-h1k" id="eNf-Ya-0OZ"/>
+                        <outlet property="imageContainer" destination="Lts-mO-r29" id="vxR-0t-mFz"/>
+                        <outlet property="nextBtn" destination="xHN-J9-HBY" id="TuD-xx-jTF"/>
                         <outlet property="outImageView" destination="1gE-kY-eRe" id="7a8-ef-IFZ"/>
                         <outlet property="prevBtn" destination="S6H-IA-AfX" id="mw1-pE-Guc"/>
                     </connections>
