@@ -10,8 +10,7 @@ import UIKit
 
 class TracksViewController: UIViewController, UITableViewDataSource {
     
-    var currentAlbum: Album!
-    private var tracks = [Track]()
+    var album: Album!
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var albumCover: UIImageView!
@@ -21,36 +20,29 @@ class TracksViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var tracksInfo: UILabel!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         
         // настройка вида
-        albumCover.image = UIImage(named: currentAlbum.coverImage)
-        albumName.text = currentAlbum.name
-        artistName.text = currentAlbum.artist
-        albumYear.text = String(currentAlbum.year)
-        tracksInfo.text = currentAlbum.tracksSummary
-        
-        // сортировка троков по номеру трека -> в отдельный массив
-        tracks = currentAlbum.tracks.sorted{ $0.trackNo < $1.trackNo }
+        albumCover.image = album.image
+        albumName.text = album.name
+        artistName.text = album.artist
+        albumYear.text = String(album.year)
+        tracksInfo.text = album.tracksSummary
     }
         
     
-    // MARK: - TableViewDataSource
+// MARK: - TableViewDataSource
     
     // кол-во элементов
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return tracks.count
+        return album.tracks.count
     }
     
     // настраиваем ячейку
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("TrackCell", forIndexPath: indexPath) as! TrackCell
-        
-        cell.populate(tracks[indexPath.row])
+        cell.populate(album.tracks[indexPath.row])
         return cell
     }
 

@@ -15,10 +15,9 @@ class AlbumCell: UITableViewCell {
     @IBOutlet weak var artistName: UILabel!
     @IBOutlet weak var tracksInfo: UILabel!
     
-    //Настройка ячейки в списке альбомов
+    // заполнение ячейки в списке альбомов
     func populate(album: Album){
-        
-        albumCover.image = UIImage(named: album.coverImage)
+        albumCover.image = album.image
         albumName.text = album.name
         artistName.text = album.artist
         tracksInfo.text = album.tracksSummary

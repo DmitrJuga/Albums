@@ -14,9 +14,8 @@ class TrackCell: UITableViewCell {
     @IBOutlet weak var trackName: UILabel!
     @IBOutlet weak var trackDuration: UILabel!
     
-    //Настройка ячейки в списке треков
+    // заполнение ячейки в списке треков
     func populate(track: Track){
-        
         trackNo.text = String(track.trackNo)
         trackName.text = track.name
         trackDuration.text = track.formatedDurarion

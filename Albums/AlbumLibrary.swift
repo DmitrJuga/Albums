@@ -11,76 +11,54 @@ import SwiftyJSON
 import CoreData
 
 
-// /** Класс для работы с "Библиотекой альбомов" */
+let AlbumAddedNotification = "DDAlbumLibraryChangedNotificationWhenAlbumAdded"
+let AlbumDeletedNotification = "DDAlbumLibraryChangedNotificationWhenAlbumDeleted"
+
+
+/** Класс для работы с "Библиотекой альбомов" */
 
 
 // MARK: - Album Library Class
 
 class AlbumLibrary {
-
-    static let context = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!
-    static let albumEntity = NSEntityDescription.entityForName("Album", inManagedObjectContext: context)!
-    static let trackEntity = NSEntityDescription.entityForName("Track", inManagedObjectContext: context)!
     
-    var albums = [Album]()
+    var albums: [Album]
     
     /** singleton */
-    static var sharedInstance = AlbumLibrary()
+    static let sharedInstance = AlbumLibrary()
     
     /** constructor */
     private init() {
-        
-        loadAlbumsFromDB()
+        // начальная загрузка альбомов из БД
+        albums = CoreDataHelper.sharedInstance.fetchObjectsForEntityNamed(Album.entityName) as! [Album]
     }
-   
-    // начальная загрузка альбомов из БД
-    func loadAlbumsFromDB() {
-        
-        var err:NSError?
-        let request = NSFetchRequest(entityName: "Album")
-        let requestResult = AlbumLibrary.context.executeFetchRequest(request, error: &err) as! [Album]?
-        if let albumsResult = requestResult {
-            albums = albumsResult
-        } else {
-            println("FETCH ERROR \(err)")
-        }
-    }
-    
+
     // добавляем альбом в БД из json-формата
-    func addAlbum(jsonAlbum: JSON) {
-        
-        let album = Album(entity: AlbumLibrary.albumEntity, insertIntoManagedObjectContext: AlbumLibrary.context)
-        album.name = jsonAlbum["Name"].stringValue
-        album.artist = jsonAlbum["Artist"].stringValue
-        album.year = jsonAlbum["Year"].intValue
-        album.coverImage = jsonAlbum["CoverImage"].stringValue
-        album.tracks = jsonAlbum["Tracks"].arrayValue.map {
-            (item: JSON) -> Track in
-                let track = Track(entity: AlbumLibrary.trackEntity, insertIntoManagedObjectContext: AlbumLibrary.context)
-                track.trackNo = item["TrackNo"].intValue
-                track.name = item["Name"].stringValue
-                track.duration = item["Duration"].intValue
-                return track
+    func addAlbumFromJSON(album: JSON, tracks: [JSON], image: UIImage?) -> Album {
+        let album = Album.createFromJSON(album)
+        if let image = image {
+            album.coverImage = UIImagePNGRepresentation(image)
         }
+        album.tracks = tracks.map { Track.createFromJSON( $0) }
+        CoreDataHelper.sharedInstance.save()
         albums.append(album)
-        saveContext()
+        let newIndex = albums.count - 1
+        NSNotificationCenter.defaultCenter().postNotificationName(AlbumAddedNotification,
+                                                           object: self,
+                                                         userInfo: ["index" : newIndex])
+        return album
     }
 
     // удаление альбома по номеру элемента
-    func deleteAlbum(i: Int) {
-        
-        AlbumLibrary.context.deleteObject(self.albums.removeAtIndex(i));
-        saveContext()
-    }
-    
-    // сохраняемся
-    private func saveContext() {
-        
-        var err: NSError?
-        if !AlbumLibrary.context.save(&err) {
-            println("SAVE ERROR \(err)")
+    func deleteAlbumAtIndex(index: Int) {
+        if index >= 0 && index < albums.count {
+            CoreDataHelper.sharedInstance.deleteObject(self.albums.removeAtIndex(index));
+            CoreDataHelper.sharedInstance.save()
+            let newIndex = index == albums.count ? albums.count - 1 : index
+            NSNotificationCenter.defaultCenter().postNotificationName(AlbumDeletedNotification,
+                                                               object: self,
+                                                             userInfo: ["index" : newIndex])
         }
     }
-
     
 }
