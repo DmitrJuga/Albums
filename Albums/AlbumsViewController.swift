@@ -10,27 +10,42 @@ import UIKit
 
 class AlbumsViewController: UIViewController, UITableViewDataSource {
 
-    
     @IBOutlet weak var tableView: UITableView!
+
+    private let library = AlbumLibrary.sharedInstance
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.reloadData()
+    var observer: AnyObject?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.tableFooterView = UIView()
+        
+        // создаём обработчик нотификаций от AlbumLibrary
+        observer = NSNotificationCenter.defaultCenter().addObserverForName(AlbumAddedNotification, object: nil,
+                                                                    queue: NSOperationQueue.mainQueue()) { notification  in
+            self.tableView.reloadData()
+            let row = notification.userInfo!["index"] as! Int
+            self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: row, inSection: 0), atScrollPosition: .Bottom, animated: true)
+        }
     }
     
-    // MARK: - Table view data source
+    // отписываемся от нотификаций
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(observer!)
+    }
+    
+    
+// MARK: - TableViewDataSource
     
     // кол-во элементов
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return AlbumLibrary.count
+        return library.albums.count
     }
     
     // настраиваем ячейку
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("AlbumCell", forIndexPath: indexPath) as! AlbumCell
-        
-        let album = AlbumLibrary.getAlbum(indexPath.row)
-        cell.populate(album)
+        cell.populate(library.albums[indexPath.row])
         return cell
     }
     
@@ -39,26 +54,23 @@ class AlbumsViewController: UIViewController, UITableViewDataSource {
         return true;
     }
 
-    
-    // удаление записи
+     // удаление записи
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            AlbumLibrary.deleteAlbum(indexPath.row)
-            tableView.reloadData()
+            library.deleteAlbumAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
         }
     }
 
     
-    // MARK: - Navigation
+// MARK: - Navigation
    
     // настраиваем TracksViewController
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let newVC = segue.destinationViewController as? TracksViewController {
-            if let index = self.tableView.indexPathForSelectedRow()?.row {
-                newVC.currentAlbum = AlbumLibrary.getAlbum(index)
-            }
+        if let newVC = segue.destinationViewController as? TracksViewController,
+           let index = self.tableView.indexPathForSelectedRow()?.row {
+                newVC.album = library.albums[index]
         }
     }
-
 
 }

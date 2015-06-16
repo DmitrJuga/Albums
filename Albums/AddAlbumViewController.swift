@@ -8,64 +8,112 @@
 
 import UIKit
 import SwiftyJSON
-import Alamofire
 
 class AddAlbumViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-    var albums = [JSON]()
+    var jsonAlbums = [JSON]()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var label1: UILabel!
     @IBOutlet weak var label2: UILabel!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
+    private let server = AlbumServer()
+    private let library = AlbumLibrary.sharedInstance
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        label1.text = "Загрузка..."
+        tableView.tableFooterView = UIView()
+        loadAlbumList()
+    }
+    
+    // загрузка списка альбомов с сервера
+    func loadAlbumList() {
+        label1.text = "Загрузка списка..."
         label2.hidden = true
-        indicator.hidden = false
-        // Загрузка списка альбомов с сервера parse.com
-        var headers = Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders!
-        headers["X-Parse-Application-Id"] = "Db5mlRZuLWCYRMw6WlWO4oXAZ0dEC4PbAwuRtjaw"
-        headers["X-Parse-REST-API-Key"] = "osTAZ8pQaiLfp0SduwOriGoHy8YYBxt7xges6crP"
-        Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders = headers
-        Alamofire.request(.GET, "https://api.parse.com/1/classes/Albums/").responseJSON {
-            _, _, jsonData, _ in
-            let json = JSON(jsonData!)
-            self.albums = JSON(jsonData!)["results"].arrayValue
-            self.label1.text = "Найдено \(self.albums.count) альбомов"
-            self.label2.hidden = false
-            self.indicator.hidden = true
-            self.tableView.reloadData()
+        indicator.startAnimating()
+        self.server.loadAlbumList { jsonAlbums in
+            dispatch_async(dispatch_get_main_queue()) {
+                self.indicator.stopAnimating()
+                if let jsonAlbums = jsonAlbums {
+                    self.jsonAlbums = jsonAlbums
+                    self.label1.text = "Найдено \(self.jsonAlbums.count) альбомов"
+                    self.label2.hidden = false
+                    self.tableView.reloadData()
+                } else {
+                    self.label1.textColor = UIColor.redColor()
+                    self.label1.text = "Ошибка загрузки с сервера!"
+                }
+            }
         }
     }
-
-    @IBAction func btnCancel(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-    }
-
     
-    // MARK: - Table view data source
+    // загрузка выбраного альбома (треки, картинка) с сохранением в библиотеке
+    func loadAlbumAndSave(album: JSON, completitionHandler: (success: Bool) -> ()) {
+        self.server.loadTracksForAlbum(album, completitionHandler: { jsonTracks in
+            if let tracks = jsonTracks {
+                self.server.loadImageForAlbum(album, completitionHandler: { image in
+                    self.library.addAlbumFromJSON(album, tracks: tracks, image: image)
+                    completitionHandler(success: true)
+                })
+            } else {
+                completitionHandler(success: false)
+            }
+        })
+     }
+    
+    
+// MARK: - TableViewDataSource
     
     // кол-во элементов
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return albums.count
+        return jsonAlbums.count
     }
     
     // настраиваем ячейку
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
-        let album = albums[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("ServerCell", forIndexPath: indexPath) as! UITableViewCell
+        let album = jsonAlbums[indexPath.row]
         cell.textLabel?.text = album["Name"].stringValue
         cell.detailTextLabel?.text = album["Artist"].stringValue
         return cell
     }
 
-    // сохраняем выбранный альбом в БД
+
+// MARK: - UITableViewDelegate
+    
+    // нажатие на строку - загружаем и сохраняем выбранный альбом в БД
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        AlbumLibrary.addAlbum(albums[indexPath.row])
+        if !indicator.isAnimating() {
+            self.label1.textColor = UIColor.blackColor()
+            label1.text = "Загрузка альбома..."
+            label2.hidden = true
+            indicator.startAnimating()
+            
+            loadAlbumAndSave(jsonAlbums[indexPath.row], completitionHandler: { success in
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.indicator.stopAnimating()
+                    if success {
+                        self.dismissViewControllerAnimated(true, completion: nil)
+                    } else {
+                        self.label1.textColor = UIColor.redColor()
+                        self.label1.text = "Ошибка загрузки с сервера!"
+                        self.label2.hidden = false
+                        self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+                    }
+                })
+            })
+        }
+        
+    }
+    
+
+// MARK: - Action Handlers
+    
+    @IBAction func btnCancelPressed(sender: AnyObject) {
+        server.cancelAllRequests()
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+
     
 }

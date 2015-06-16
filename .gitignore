@@ -1,6 +1,4 @@
 # Exclude personal Xcode user settings
 xcuserdata/
-*.xcworkspace/
-Pods/
-Podfile
-*.lock
+Images/
+parse_content

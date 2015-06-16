@@ -9,11 +9,6 @@
 import UIKit
 
 
-enum RollDirection: Int {
-    case prev = -1
-    case next = 1
-}
-
 class GalleryViewController: UIViewController {
 
     
@@ -26,84 +21,91 @@ class GalleryViewController: UIViewController {
     @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var detailBtn: UIButton!
     
-    var albumIndex = 0
-    var currentAlbum: Album!
+    private var currentIndex = 0
+
+    var albumIndex = 0 {
+        didSet {
+            if albumIndex != oldValue {
+                let direction = (albumIndex - oldValue) / abs(albumIndex - oldValue)
+                currentIndex += direction
+                currentIndex = (currentIndex > library.albums.count - 1) ? 0 : (currentIndex < 0) ? library.albums.count - 1 : currentIndex
+                albumIndex = currentIndex
+                currentAlbum = library.albums[albumIndex]
+                rollCarousel(direction)
+            }
+        }
+    }
     
+    var currentAlbum: Album! {
+        didSet {
+            albumName.text = currentAlbum.name
+            artistName.text = currentAlbum.artist
+        }
+    }
+    
+    private let library = AlbumLibrary.sharedInstance
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
+        setupUI()
+        // подписываемся на нотификаций от AlbumLibrary
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("changeHandler:"), name: nil, object: library)
         // добавляем распознавание свайпов
-        let gRecog1 = UISwipeGestureRecognizer(target: self, action: "nextBtn:")
+        let gRecog1 = UISwipeGestureRecognizer(target: self, action: "nextBtnPressed:")
         gRecog1.direction = .Left
         imageContainer.addGestureRecognizer(gRecog1)
-        let gRecog2 = UISwipeGestureRecognizer(target: self, action: "prevBtn:")
+        let gRecog2 = UISwipeGestureRecognizer(target: self, action: "prevBtnPressed:")
         gRecog2.direction = .Right
         imageContainer.addGestureRecognizer(gRecog2)
     }
     
-    
-    override func viewWillAppear(animated: Bool) {
-        
-        super.viewWillAppear(animated)
-        albumIndex = AlbumLibrary.count - 1
-        refresh()
+    // обработчик нотификаций об изменениях в AlbumLibrary
+    func changeHandler(notification: NSNotification) {
+        currentIndex = notification.userInfo!["index"] as! Int
+        setupUI()
     }
     
-    // обновление
-    func refresh() {
-        
+    // отписываемся от нотификаций
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+
+    // начальная установка UI
+    func setupUI() {
         outImageView.hidden = true
-        if AlbumLibrary.count > 1 {
+        if library.albums.count > 1 {
             prevBtn.hidden = false
             nextBtn.hidden = false
         } else {
             prevBtn.hidden = true
             nextBtn.hidden = true
         }
-        if AlbumLibrary.count != 0 {
+        if library.albums.count != 0 {
             detailBtn.hidden = false
-            currentAlbum = AlbumLibrary.getAlbum(albumIndex)
-            albumView.image = UIImage(named: currentAlbum.coverImage)
-            albumName.text = currentAlbum.name
-            artistName.text = currentAlbum.artist
+            currentAlbum = library.albums[currentIndex]
+            albumView.image = currentAlbum.image
         } else {
             detailBtn.hidden = true
-            albumView.image = UIImage(named: "coverImg0")
+            albumView.image = UIImage(named: "defaultCover")
             albumName.text = "Нет альбомов"
             artistName.text = "Нажмите (+) чтобы загрузить"
         }
     }
     
-    // Карусель
-    func rollCarousel(direction: RollDirection) {
-        
-        // смена номера текущего альбома
-        albumIndex += direction.rawValue
-        // корректировка номера для зацикливания
-        albumIndex = (albumIndex > AlbumLibrary.count - 1) ? 0 : (albumIndex < 0) ? AlbumLibrary.count - 1 : albumIndex
-        // загрузка текущего альбома
-        currentAlbum = AlbumLibrary.getAlbum(albumIndex)
-        
-        // апдейт подписей
-        albumName.text = currentAlbum.name
-        artistName.text = currentAlbum.artist
-        
-        //--- Анимация смены картинки ---
-        
+    // "Карусель" - анимация смены картинки
+    func rollCarousel(direction: Int) {
         // параметры для "отъезда" старой картинки в outImageView
         let outStartX = albumView.frame.origin.x
-        let outFinalX = (view.frame.size.width) * CGFloat(direction.rawValue) * -1
+        let outFinalX = view.frame.size.width * CGFloat(direction) * -1
         outImageView.image = albumView.image
         outImageView.frame.origin.x = outStartX
         outImageView.hidden = false
         outImageView.alpha = 1
         
         // параметры для "прибытия" новой картинки в albumView
-        let inStartX = (view.frame.size.width) * CGFloat(direction.rawValue)
+        let inStartX = view.frame.size.width * CGFloat(direction)
         let inFinalX = albumView.frame.origin.x
-        albumView.image = UIImage(named: currentAlbum.coverImage)
+        albumView.image = currentAlbum.image
         albumView.frame.origin.x = inStartX
         albumView.alpha = 0
         
@@ -114,28 +116,30 @@ class GalleryViewController: UIViewController {
                         self.outImageView.frame.origin.x = outFinalX
                         self.albumView.frame.origin.x = inFinalX
                         }
-
     }
     
-    @IBAction func nextBtn(sender: UIButton) {
-        if AlbumLibrary.count > 1 {
-            rollCarousel(.next)
+
+// MARK: - Action Handlers
+    
+    @IBAction func nextBtnPressed(sender: UIButton) {
+        if library.albums.count > 1 {
+            albumIndex++
         }
     }
     
-    @IBAction func prevBtn(sender: UIButton) {
-        if AlbumLibrary.count > 1 {
-            rollCarousel(.prev)
+    @IBAction func prevBtnPressed(sender: UIButton) {
+        if library.albums.count > 1 {
+            albumIndex--
         }
     }
 
     
-    // MARK: - Navigation
+// MARK: - Navigation
     
     // настраиваем TracksViewController
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let newVC = segue.destinationViewController as? TracksViewController {
-                newVC.currentAlbum = AlbumLibrary.getAlbum(albumIndex)
+                newVC.album = currentAlbum
         }
     }
     
