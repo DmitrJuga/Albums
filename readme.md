@@ -37,6 +37,7 @@
 **App UI**
 - В UI приложения построено в Storyboard; используется 4 `UIViewController`-а, `UITabBarController`, `UINavigationController`, Segue-переходы.
 - Используется `UITableView` c кастомными ячейками и удалением строк, а также `UITableView` со стандартными ячеками.
+- Обработчик `UISwipeGestureRecognizer` для *"пролистывания"* обложек в Галерее.
 - Анимация смены картинок в Галерее с помощью `UIView.animateWithDuration`.
 - Обновление данных во view при получении нотификацих через `NSNotificationCenter`.
 - Auto Layout (констрейнты в Storyboard).
@@ -51,11 +52,11 @@
 
 ## Основа проекта
 
-Проект создан на основе моих домашних работ к урокам 2, 3, 4, 5 по курсу **"Swift. Современные технологии программирования под Apple"** в [НОЧУ ДО «Школа программирования» (http://geekbrains.ru)](http://geekbrains.ru/) и доработан после окончания курса. Домашнее задание и пояснения к выполненой работе - см. в [homework_readme.md](https://github.com/DmitrJuga/Albums/blob/master/homework_readme.md).
+Проект создан на основе моих домашних работ к урокам 2, 3, 4, 5 по курсу **"Swift. Современные технологии программирования под Apple"** в НОЧУ ДО «Школа программирования» ([http://geekbrains.ru](http://geekbrains.ru/users/38648)) и доработан после окончания курса. Домашнее задание и пояснения к выполненой работе - см. в [homework_readme.md](https://github.com/DmitrJuga/Albums/blob/master/homework_readme.md).
 
 ---
 
-### Контакты
+### Contacts
 
 **Дмитрий Долотенко / Dmitry Dolotenko**
 
