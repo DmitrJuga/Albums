@@ -40,9 +40,6 @@
 - Анимация смены картинок в Галерее с помощью `UIView.animateWithDuration`.
 - Обновление данных во view при получении нотификацих через `NSNotificationCenter`.
 - Auto Layout (констрейнты в Storyboard).
-
-**Дополнительно**:
-
 - Launch Screen, App Icon (изображения из свободных web-источников).
 
 ## Ещё скриншоты
@@ -58,7 +55,7 @@
 
 ---
 
-### Contacts
+### Контакты
 
 **Дмитрий Долотенко / Dmitry Dolotenko**
 
