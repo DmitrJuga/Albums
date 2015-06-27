@@ -437,20 +437,20 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MNQ-Sb-xBB" userLabel="ButtonsContainer">
                                 <rect key="frame" x="16" y="352" width="288" height="70"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Альбом" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fd-Ft-71y">
-                                        <rect key="frame" x="114" y="7" width="60" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Альбом" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000027" translatesAutoresizingMaskIntoConstraints="NO" id="2fd-Ft-71y">
+                                        <rect key="frame" x="48" y="7" width="192" height="20"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Артист" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ff-5R-B2r">
-                                        <rect key="frame" x="121" y="27" width="47" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Артист" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ff-5R-B2r">
+                                        <rect key="frame" x="48" y="27" width="192" height="17"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nhW-YR-h1k">
-                                        <rect key="frame" x="104" y="36" width="80" height="32"/>
+                                        <rect key="frame" x="104" y="40" width="80" height="32"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <state key="normal" title="Открыть &gt;"/>
                                         <connections>
@@ -478,24 +478,27 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="nhW-YR-h1k" firstAttribute="top" secondItem="3ff-5R-B2r" secondAttribute="bottom" constant="-8" id="5HW-L3-d7o"/>
+                                    <constraint firstItem="nhW-YR-h1k" firstAttribute="top" secondItem="3ff-5R-B2r" secondAttribute="bottom" constant="-4" id="5HW-L3-d7o"/>
                                     <constraint firstItem="S6H-IA-AfX" firstAttribute="leading" secondItem="MNQ-Sb-xBB" secondAttribute="leading" id="BGt-JR-1BP"/>
                                     <constraint firstAttribute="centerX" secondItem="3ff-5R-B2r" secondAttribute="centerX" id="BNc-xY-Pxo"/>
                                     <constraint firstAttribute="centerY" secondItem="xHN-J9-HBY" secondAttribute="centerY" id="EnT-UW-HZ6"/>
                                     <constraint firstItem="3ff-5R-B2r" firstAttribute="top" secondItem="2fd-Ft-71y" secondAttribute="bottom" id="H9A-mD-OZs"/>
                                     <constraint firstAttribute="height" constant="70" id="K6D-2E-8aQ"/>
                                     <constraint firstAttribute="centerY" secondItem="S6H-IA-AfX" secondAttribute="centerY" id="KTR-fy-uYq"/>
+                                    <constraint firstItem="xHN-J9-HBY" firstAttribute="leading" secondItem="2fd-Ft-71y" secondAttribute="trailing" constant="-16" id="SmR-0C-o6f"/>
                                     <constraint firstAttribute="centerX" secondItem="2fd-Ft-71y" secondAttribute="centerX" id="TzX-JY-ii8"/>
                                     <constraint firstAttribute="centerX" secondItem="nhW-YR-h1k" secondAttribute="centerX" id="XCP-CX-YBB"/>
                                     <constraint firstAttribute="trailing" secondItem="xHN-J9-HBY" secondAttribute="trailing" id="XjL-KE-A6e"/>
+                                    <constraint firstItem="3ff-5R-B2r" firstAttribute="width" secondItem="2fd-Ft-71y" secondAttribute="width" id="dnH-Zv-63G"/>
                                     <constraint firstItem="2fd-Ft-71y" firstAttribute="top" secondItem="MNQ-Sb-xBB" secondAttribute="top" constant="8" id="iVL-24-8hx"/>
+                                    <constraint firstItem="2fd-Ft-71y" firstAttribute="leading" secondItem="S6H-IA-AfX" secondAttribute="trailing" constant="-16" id="leK-uo-fAm"/>
                                     <constraint firstAttribute="centerY" secondItem="3ff-5R-B2r" secondAttribute="centerY" id="oT2-Pf-9D9"/>
                                     <constraint firstAttribute="bottom" secondItem="nhW-YR-h1k" secondAttribute="bottom" id="wXr-oV-Sae"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="wXr-oV-Sae"/>
                                         <exclude reference="iVL-24-8hx"/>
+                                        <exclude reference="wXr-oV-Sae"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -555,6 +558,6 @@
         <image name="defaultCover" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kWt-QD-oVg"/>
+        <segue reference="yVV-9t-Qdy"/>
     </inferredMetricsTieBreakers>
 </document>

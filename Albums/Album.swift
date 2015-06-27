@@ -22,7 +22,7 @@ class Album: NSManagedObject {
     @NSManaged var artist: String
     @NSManaged var coverImage: NSData
     @NSManaged var coverURL: String
-    @NSManaged var year: NSInteger
+    @NSManaged var year: Int64
     @NSManaged private var trackSet: NSOrderedSet
 
     static let entityName = "Album"
@@ -39,7 +39,7 @@ extension Album {
         var obj = CoreDataHelper.sharedInstance.addObjectForEntityNamed(entityName) as! Album
         obj.name = json["Name"].stringValue
         obj.artist = json["Artist"].stringValue
-        obj.year = json["Year"].intValue
+        obj.year = json["Year"].int64Value
         obj.coverURL = json["CoverImage"].stringValue
         return obj
     }
@@ -61,7 +61,7 @@ extension Album {
     
     // суммарная дительность всех треков в секундах
     var totalDuration: Int {
-        return tracks.reduce(0) {$0 + $1.duration}
+        return Int(tracks.reduce(0) {$0 + $1.duration})
     }
     // общая информация о треках
     var tracksSummary: String {

@@ -1,6 +1,6 @@
 # ![](https://github.com/DmitrJuga/Albums/blob/master/Albums/Images.xcassets/AppIcon.appiconset/depositphotos_8950241-Music-cd-icon-29@2x.png)  Фонотека / Albums
 
-**"Фонотека"** - простая библиотека музыкальных альбомов. Учебный (тестовый) проект на **Swift** c использованием  **CoreData**, **Alamofire**, **SwiftyJSON** и серверного приложенияи на [parse.com](http://parse.com).
+**"Фонотека"** - простая библиотека музыкальных альбомов. Учебный (тестовый) проект на **Swift** c использованием  **CoreData**, **Alamofire**, **SwiftyJSON** и серверного приложения на [parse.com](http://parse.com).
 
 ![](https://github.com/DmitrJuga/Albums/blob/master/screenshots/screenshot6.png)
 ![](https://github.com/DmitrJuga/Albums/blob/master/screenshots/screenshot1.png)

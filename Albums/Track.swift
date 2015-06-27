@@ -18,9 +18,9 @@ import SwiftyJSON
 
 class Track: NSManagedObject {
 
-    @NSManaged var duration: NSInteger
+    @NSManaged var duration: Int64
     @NSManaged var name: String
-    @NSManaged var trackNo: NSInteger
+    @NSManaged var trackNo: Int64
     @NSManaged var fromAlbum: Album
     
     static let entityName = "Track"
@@ -35,9 +35,9 @@ extension Track {
     // маппинг полей из JSON объекта
     class func createFromJSON(json: JSON) -> Track {
         let obj = CoreDataHelper.sharedInstance.addObjectForEntityNamed(entityName) as! Track
-        obj.trackNo = json["TrackNo"].intValue
+        obj.trackNo = json["TrackNo"].int64Value
         obj.name = json["Name"].stringValue
-        obj.duration = json["Duration"].intValue
+        obj.duration = json["Duration"].int64Value
         return obj
     }
     
